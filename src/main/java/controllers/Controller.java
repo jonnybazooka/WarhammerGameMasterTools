@@ -1,0 +1,127 @@
+package controllers;
+
+import dice.DiceRoller;
+import dto.Adventurer;
+import dto.Combatant;
+import dto.Side;
+import fileOps.FileIOManager;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Controller {
+    private static final Logger LOGGER = LogManager.getLogger(FileIOManager.class.getName());
+
+    public TextField advNameField;
+    public TextField initiativeField;
+    public TextField perceptionField;
+    public Button saveAdventurerButton;
+    public TextArea textArea;
+    public Button loadAdventurersButton;
+    public Button updateAdventurerButton;
+    public Button deleteAdventurerButton;
+    public Button addOppButton;
+    public TextField oppNameField;
+    public TextField oppInitiativeField;
+    public Button startCombatButton;
+
+    List<Adventurer> adventurerList = new ArrayList<>();
+    List<Combatant> combatantList = new ArrayList<>();
+
+    @FXML
+    public void initialize() {
+        textArea.setStyle("-fx-font-family: monospace");
+    }
+
+    public void saveAdventurer(ActionEvent event) {
+        LOGGER.debug("Attempting to save adventurer: " + advNameField.getText());
+        FileIOManager fileIOManager = new FileIOManager();
+        fileIOManager.saveAdventurer(advNameField, initiativeField, perceptionField);
+        textArea.clear();
+        textArea.appendText(advNameField.getText() + " saved.");
+        clearAdventurerFields();
+    }
+
+    public void loadAdventurers(ActionEvent event) {
+        LOGGER.debug("Attempting to load adventurers.");
+        FileIOManager fileIOManager = new FileIOManager();
+        adventurerList.clear();
+        adventurerList.addAll(fileIOManager.loadAdventurers());
+        textArea.clear();
+        textArea.appendText("Adventurers loaded.\n");
+        for (Adventurer adv : adventurerList) {
+            textArea.appendText(adv.toString() + "\n");
+        }
+    }
+
+    public void updateAdventurer(ActionEvent event) {
+        LOGGER.debug("Attempting to update adventurer: " + advNameField.getText());
+        FileIOManager fileIOManager = new FileIOManager();
+        boolean isSuccessful = fileIOManager.updateAdventurer(advNameField, initiativeField, perceptionField);
+        textArea.clear();
+        if (isSuccessful) {
+            textArea.appendText(advNameField.getText() + " has been updated.");
+            clearAdventurerFields();
+        } else {
+            textArea.appendText(advNameField.getText() + " couldn't be updated.");
+        }
+    }
+
+    public void deleteAdventurer(ActionEvent event) {
+        LOGGER.debug("Attempting to delete adventurer: " + advNameField.getText());
+        FileIOManager fileIOManager = new FileIOManager();
+        boolean isSuccessful = fileIOManager.deleteAdventurer(advNameField);
+        textArea.clear();
+        if (isSuccessful) {
+            textArea.appendText(advNameField.getText() + " has been deleted.");
+            clearAdventurerFields();
+        } else {
+            textArea.appendText(advNameField.getText() + " couldn't be deleted.");
+        }
+    }
+
+    public void addCombatant(ActionEvent event) {
+        LOGGER.debug("Attempting to add combatant: " + oppNameField.getText() + " to combat.");
+        Combatant combatant = new Combatant(oppNameField.getText(), Integer.parseInt(oppInitiativeField.getText()), Side.OPPONENT);
+        combatantList.add(combatant);
+        textArea.appendText(oppNameField.getText() + " added to combat.\n");
+        clearOpponentFields();
+    }
+
+    public void startCombat(ActionEvent event) {
+        LOGGER.debug("Attempting to start combat.");
+        loadAdventurers(event);
+        textArea.clear();
+        addAdventurersToCombat();
+        DiceRoller diceRoller = new DiceRoller();
+        List<Combatant> initiativeOrder = diceRoller.rollInitiative(combatantList);
+        for (Combatant combatant : initiativeOrder) {
+            textArea.appendText(combatant.toString() + "\n");
+        }
+        combatantList.clear();
+    }
+
+    private void addAdventurersToCombat() {
+        for (Adventurer adv : adventurerList) {
+            Combatant combatant = new Combatant(adv.getName(), adv.getInitiative(), Side.PLAYER);
+            combatantList.add(combatant);
+        }
+    }
+
+    private void clearAdventurerFields() {
+        advNameField.clear();
+        initiativeField.clear();
+        perceptionField.clear();
+    }
+
+    private void clearOpponentFields() {
+        oppNameField.clear();
+        oppInitiativeField.clear();
+    }
+}

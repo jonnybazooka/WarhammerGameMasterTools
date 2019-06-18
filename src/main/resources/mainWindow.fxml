@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+   <left>
+      <AnchorPane prefHeight="602.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="saveAdventurerButton" mnemonicParsing="false" onAction="#saveAdventurer" prefWidth="140.0" text="Save Adventurer" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="loadAdventurersButton" mnemonicParsing="false" onAction="#loadAdventurers" prefWidth="140.0" text="Load Adventurers" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0" />
+            <Button fx:id="updateAdventurerButton" mnemonicParsing="false" onAction="#updateAdventurer" prefWidth="140.0" text="Update Adventurer" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="85.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="deleteAdventurerButton" mnemonicParsing="false" onAction="#deleteAdventurer" prefWidth="140.0" text="Delete Adventurer" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="125.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="addOppButton" mnemonicParsing="false" onAction="#addCombatant" prefHeight="50.0" prefWidth="140.0" text="Add Opponent to Combat" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="165.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="startCombatButton" mnemonicParsing="false" onAction="#startCombat" prefWidth="140.0" text="Start Combat" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="225.0" />
+         </children></AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefWidth="175.0" text="Adventurer's Name" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <TextField fx:id="advNameField" layoutX="14.0" layoutY="26.0" prefHeight="30.0" prefWidth="175.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="25.0" />
+            <Label prefWidth="70.0" text="Initiative" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="60.0" />
+            <TextField fx:id="initiativeField" prefHeight="30.0" prefWidth="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="80.0" />
+            <Label prefWidth="90.0" text="Perception" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="60.0" />
+            <TextField fx:id="perceptionField" prefHeight="30.0" prefWidth="50.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="80.0" />
+            <Label prefWidth="175.0" text="Opponent's Name" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="5.0" />
+            <TextField fx:id="oppNameField" prefHeight="30.0" prefWidth="175.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="25.0" />
+            <Label prefWidth="70.0" text="Initiative" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="60.0" />
+            <TextField fx:id="oppInitiativeField" prefHeight="30.0" prefWidth="50.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="80.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <center>
+      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </center>
+</BorderPane>
