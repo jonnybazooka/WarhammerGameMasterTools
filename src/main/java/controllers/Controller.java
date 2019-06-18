@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
     private static final Logger LOGGER = LogManager.getLogger(FileIOManager.class.getName());
@@ -30,6 +31,7 @@ public class Controller {
     public TextField oppNameField;
     public TextField oppInitiativeField;
     public Button startCombatButton;
+    public Button perceptionCheckButton;
 
     List<Adventurer> adventurerList = new ArrayList<>();
     List<Combatant> combatantList = new ArrayList<>();
@@ -105,6 +107,27 @@ public class Controller {
             textArea.appendText(combatant.toString() + "\n");
         }
         combatantList.clear();
+    }
+
+    public void perceptionCheck(ActionEvent event) {
+        LOGGER.debug("Attempting perception check.");
+        loadAdventurers(event);
+        textArea.clear();
+        DiceRoller diceRoller = new DiceRoller();
+        Map<String, Integer[]> perceptionResults = diceRoller.rollPerception(adventurerList);
+        showResults(perceptionResults);
+    }
+
+    private void showResults(Map<String, Integer[]> perceptionResults) {
+        for(Map.Entry<String, Integer[]>entry : perceptionResults.entrySet()) {
+            if (entry.getValue()[0] != 0) {
+                textArea.appendText(String.format("%-16s PERCEPTION CHECK: %d SL\n", entry.getKey(), entry.getValue()[0]));
+            } else if (entry.getValue()[1] == -1){
+                textArea.appendText(String.format("%-16s PERCEPTION CHECK: -%d SL\n", entry.getKey(), entry.getValue()[0]));
+            } else {
+                textArea.appendText(String.format("%-16s PERCEPTION CHECK: %d SL\n", entry.getKey(), entry.getValue()[0]));
+            }
+        }
     }
 
     private void addAdventurersToCombat() {

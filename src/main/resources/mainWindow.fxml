@@ -30,6 +30,7 @@
                </font>
             </Button>
             <Button fx:id="startCombatButton" mnemonicParsing="false" onAction="#startCombat" prefWidth="140.0" text="Start Combat" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="225.0" />
+            <Button fx:id="perceptionCheckButton" mnemonicParsing="false" onAction="#perceptionCheck" prefWidth="140.0" text="Perception Check" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="265.0" />
          </children></AnchorPane>
    </left>
    <bottom>
