@@ -46,6 +46,8 @@
             <TextField fx:id="oppNameField" prefHeight="30.0" prefWidth="175.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="25.0" />
             <Label prefWidth="70.0" text="Initiative" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="60.0" />
             <TextField fx:id="oppInitiativeField" prefHeight="30.0" prefWidth="50.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="80.0" />
+            <Label layoutX="485.0" layoutY="5.0" text="Random Names Generator" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="imperialButton" layoutX="430.0" layoutY="25.0" mnemonicParsing="false" onAction="#getRandomImperialName" text="Imperial" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="25.0" />
          </children>
       </AnchorPane>
    </bottom>

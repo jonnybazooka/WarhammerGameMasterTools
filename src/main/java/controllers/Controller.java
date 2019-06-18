@@ -12,6 +12,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,7 @@ public class Controller {
     public TextField oppInitiativeField;
     public Button startCombatButton;
     public Button perceptionCheckButton;
+    public Button imperialButton;
 
     List<Adventurer> adventurerList = new ArrayList<>();
     List<Combatant> combatantList = new ArrayList<>();
@@ -146,5 +149,12 @@ public class Controller {
     private void clearOpponentFields() {
         oppNameField.clear();
         oppInitiativeField.clear();
+    }
+
+    public void getRandomImperialName(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        String imperial = fileIOManager.getImperial();
+        textArea.clear();
+        textArea.appendText(imperial);
     }
 }
