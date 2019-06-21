@@ -12,8 +12,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +33,10 @@ public class Controller {
     public Button startCombatButton;
     public Button perceptionCheckButton;
     public Button imperialButton;
+    public Button dwarvenButton;
+    public Button saveNPCButton;
+    public Button loadNPCsButton;
+    public Button updateNPCsButton;
 
     List<Adventurer> adventurerList = new ArrayList<>();
     List<Combatant> combatantList = new ArrayList<>();
@@ -156,5 +158,35 @@ public class Controller {
         String imperial = fileIOManager.getImperial();
         textArea.clear();
         textArea.appendText(imperial);
+    }
+
+    public void getRandomDwarvenName(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        String imperial = fileIOManager.getDwarven();
+        textArea.clear();
+        textArea.appendText(imperial);
+    }
+
+    public void saveNPC(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        fileIOManager.saveNPC(textArea);
+        textArea.clear();
+        textArea.appendText("NPC saved.");
+    }
+
+    public void loadNPCs(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        List<String> npcs = fileIOManager.loadNPCs();
+        textArea.clear();
+        for (String line : npcs) {
+            textArea.appendText(line + System.lineSeparator());
+        }
+    }
+
+    public void updateNPCs(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        fileIOManager.updateNPCs(textArea);
+        textArea.clear();
+        textArea.appendText("NPCs updated.");
     }
 }
