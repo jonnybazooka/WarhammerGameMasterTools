@@ -49,5 +49,5 @@
 {"name":"Vala"},
 {"name":"Valma"},
 {"name":"Vanyra"},
-{"name":"Zylra"},
+{"name":"Zylra"}
 ]
