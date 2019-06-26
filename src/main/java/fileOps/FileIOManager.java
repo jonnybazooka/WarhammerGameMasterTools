@@ -23,6 +23,9 @@ public class FileIOManager {
     private final String DWARF_MALE_FORENAME = "names/Dwarf_Male_Name.txt";
     private final String DWARF_FEMALE_FORENAME = "names/Dwarf_Female_Name.txt";
     private final String DWARF_SURNAME = "names/Dwarf_Surname.txt";
+    private final String ELF_MALE_NAME_PATH = "names/Elf_Male_Name.txt";
+    private final String ELF_FEMALE_NAME_PATH = "names/Elf_Female_Name.txt";
+    private final String ELF_SURNAME_PATH = "names/Elf_Surname.txt";
     private Gson gson;
 
     public FileIOManager() {
@@ -194,6 +197,22 @@ public class FileIOManager {
         }
     }
 
+    public String getElfMale() {
+        String name = getName(ELF_MALE_NAME_PATH);
+        String lastName = getName(ELF_SURNAME_PATH);
+        assert name != null;
+        assert lastName != null;
+        return name.toUpperCase() + " " + lastName.toUpperCase();
+    }
+
+    public String getElfFemale() {
+        String name = getName(ELF_FEMALE_NAME_PATH);
+        String lastName = getName(ELF_SURNAME_PATH);
+        assert name != null;
+        assert lastName != null;
+        return name.toUpperCase() + " " + lastName.toUpperCase();
+    }
+
     public void saveNPC(TextArea textArea) {
         File dir = new File(FILE_DIR);
         File file = new File(NPC_PATH);
@@ -243,4 +262,6 @@ public class FileIOManager {
             LOGGER.error(e.getMessage(), e);
         }
     }
+
+
 }

@@ -39,6 +39,8 @@ public class Controller {
     public Button updateNPCsButton;
     public Button imperialFemaleButton;
     public Button dwarvenFemaleButton;
+    public Button elfMaleButton;
+    public Button elfFemaleButton;
 
     List<Adventurer> adventurerList = new ArrayList<>();
     List<Combatant> combatantList = new ArrayList<>();
@@ -181,6 +183,20 @@ public class Controller {
         String dwarf = fileIOManager.getDwarvenFemale();
         textArea.clear();
         textArea.appendText(dwarf);
+    }
+
+    public void getRandomElfMaleName(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        String elf = fileIOManager.getElfMale();
+        textArea.clear();
+        textArea.appendText(elf);
+    }
+
+    public void getRandomElfFemaleName(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        String elf = fileIOManager.getElfFemale();
+        textArea.clear();
+        textArea.appendText(elf);
     }
 
     public void saveNPC(ActionEvent event) {
