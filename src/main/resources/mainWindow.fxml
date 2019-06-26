@@ -52,6 +52,8 @@
             <Button fx:id="saveNPCButton" layoutX="430.0" layoutY="155.0" mnemonicParsing="false" onAction="#saveNPC" text="Save NPC" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="430.0" />
             <Button fx:id="loadNPCsButton" mnemonicParsing="false" onAction="#loadNPCs" text="Load NPCs" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="525.0" />
             <Button fx:id="updateNPCsButton" mnemonicParsing="false" onAction="#updateNPCs" text="Update NPCs" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="630.0" />
+            <Button fx:id="imperialFemaleButton" mnemonicParsing="false" onAction="#getRandomImperialFemaleName" text="Imperial Female" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" />
+            <Button fx:id="dwarvenFemaleButton" mnemonicParsing="false" onAction="#getRandomDwarvenFemaleName" text="Dwarven Female" AnchorPane.leftAnchor="565.0" AnchorPane.topAnchor="65.0" />
          </children>
       </AnchorPane>
    </bottom>

@@ -37,6 +37,8 @@ public class Controller {
     public Button saveNPCButton;
     public Button loadNPCsButton;
     public Button updateNPCsButton;
+    public Button imperialFemaleButton;
+    public Button dwarvenFemaleButton;
 
     List<Adventurer> adventurerList = new ArrayList<>();
     List<Combatant> combatantList = new ArrayList<>();
@@ -160,11 +162,25 @@ public class Controller {
         textArea.appendText(imperial);
     }
 
-    public void getRandomDwarvenName(ActionEvent event) {
+    public void getRandomImperialFemaleName(ActionEvent event) {
         FileIOManager fileIOManager = new FileIOManager();
-        String imperial = fileIOManager.getDwarven();
+        String imperial = fileIOManager.getFemaleImperial();
         textArea.clear();
         textArea.appendText(imperial);
+    }
+
+    public void getRandomDwarvenName(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        String dwarf = fileIOManager.getDwarven();
+        textArea.clear();
+        textArea.appendText(dwarf);
+    }
+
+    public void getRandomDwarvenFemaleName(ActionEvent event) {
+        FileIOManager fileIOManager = new FileIOManager();
+        String dwarf = fileIOManager.getDwarvenFemale();
+        textArea.clear();
+        textArea.appendText(dwarf);
     }
 
     public void saveNPC(ActionEvent event) {
@@ -189,4 +205,6 @@ public class Controller {
         textArea.clear();
         textArea.appendText("NPCs updated.");
     }
+
+
 }
