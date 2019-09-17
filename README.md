@@ -56,3 +56,6 @@ Load all NPCs and displays information about them. Example:
 **Update NPCs**
 
 All loaded information about NPCs can be modified. If game master wishes to add something or remove, this button serves just that purpose.
+
+### Release
+Zipped archive available at: https://1drv.ms/u/s!AgTphPW2o3ZIgP8mVwNAyG5HrKF60Q?e=oIphCd
