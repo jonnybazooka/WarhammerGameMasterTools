@@ -1,5 +1,5 @@
 # Warhammer Game Master's Toolkit
-This application was developed for personal use as a tool for game master. It's origilan purpose was to track combat in Warhammer RPG 4th edition. Some additional features were added during development.
+This application was developed for personal use as a tool for game master. It's original purpose was to track combat in Warhammer RPG 4th edition. Some additional features were added during development.
 
 ## Features:
 ### Main View
