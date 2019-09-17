@@ -58,4 +58,4 @@ Load all NPCs and displays information about them. Example:
 All loaded information about NPCs can be modified. If game master wishes to add something or remove, this button serves just that purpose.
 
 ### Release
-File available at: https://1drv.ms/u/s!AgTphPW2o3ZIgP8mVwNAyG5HrKF60Q?e=oIphCd
+File available [here](https://1drv.ms/u/s!AgTphPW2o3ZIgP8mVwNAyG5HrKF60Q?e=oIphCd)
